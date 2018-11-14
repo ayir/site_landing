@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Company Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about"><HEAD>HOW IT WORKS</HEAD></a></li>
+        <li><a href="#working">WHAT MAKES US DIFFERENT</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1>Smart, Automated A/B Testing</h1> 
+  <p>Our AI runs through millions of hypotheses and chooses the best performing ones to assure you success.</p> 
+      <div class="input-group-btn" >
+        <button  type="button" class="btn btn-danger"><a href="#contact" style="color: #fff">Request Access</a></button>
+      </div>  
+</div>
+
+<div id="about" class="container-fluid bg-3 text-center">
+<h1>How it works</h1>
+  <div class="row">
+    <div class="col-sm-4">
+    <div class="word-1" style="word-break: break-all;">
+      Our AI creates millions of hypotheses and tests them in real-time.
+    </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="word-1" style="word-break: break-all;">
+      It then returns the most promising hypotheses, according to your goals.
+    </div>
+      </div>
+    
+    <div class="col-sm-4">
+    <div class="word-1" style="word-break: break-all;">
+      The Top 5 Variants can then be A/B tested using your favorite A/B testing platform.
+    </div>
+    </div>
+  </div>
+</div>
+
+<div id="working" class="container-fluid bg-grey text-center">
+<h1>What makes us different?</h1><br>
+  <div class ="table -responsive" style="display: inline-block;width: 50%">
+      <table class="table table-bordered">
+    <thead>
+      <tr>
+        <td></td>
+        <td>A/B Testing</td>
+        <td>IntelliTest</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Prepare Variants</td>
+        <td>Yes</td>
+        <td>Automated</td>
+      </tr>
+      <tr>
+        <td>Track</td>
+        <td>Yes</td>
+        <td>Automated</td>
+      </tr>
+      <tr>
+        <td>Personalized</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Evaluate millions of hypotheses</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+<div id="contact" class="container-fluid bg-grey">
+  <h1 class="text-center" style="padding-bottom: 70px">Request Access</h1>
+  
+    
+        
+        <div class="slideanim form-group " style="text-align: center;">
+          <input class="form-control " id="email" name="email" placeholder="Email" type="email" required style="height: 50px;width:30%;display: inline-block;margin-bottom: 20px">
+        </div>
+      
+     
+        <div class="text-center slideanim form-group">
+          <button id = "submit_button" class="btn btn-danger" type="submit">Send</button>
+        </div>
+     
+   
+</div>
+
+
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Made in India </p>
+     
+      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+</footer>
+
+<script>
+$(document).ready(function(){
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+
+      var hash = this.hash;
+
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        window.location.hash = hash;
+      });
+    } 
+  });
+
+ 
+
+
+  
+  
+
+  $("#submit_button").on('click',function(event){
+    const url = "http://localhost:3000/save_email"
+    const data = {
+      email:document.getElementById("email").value
+    }
+    $.post(url,data,function(data,status){
+      
+        window.alert("Thanks for subscribing!We will contact you soon")
+      
+    })
+
+})
+  
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+ 
+</body>
+</html>
